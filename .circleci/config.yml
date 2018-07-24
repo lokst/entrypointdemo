@@ -1,7 +1,8 @@
 defaults: &defaults
   working_directory: ~/repo
+  shell: /bin/bash --login -eo pipefail
   docker:
-    - image: oinvertedworld/entrypoint_test:latest
+    - image: oinvertedworld/entrypoint_test_alt
 
 version: 2
 jobs:
@@ -9,8 +10,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run: 
-          shell: /bin/bash --login -eo pipefail
+      - run:
           command: |
             groundhog --version
 
